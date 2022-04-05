@@ -1,0 +1,24 @@
+{% extends 'chat/base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'styles/home.css' %}">
+<link rel="stylesheet" href="{% static 'styles/room.css' %}">
+{% endblock css %}
+
+{% block content %}
+<div style="max-width: 550px;" class="form-signin">
+    <input id="user-uuid" type="hidden" value="{{ request.session.user_uuid }}">
+
+    <div id="show-message-box" class="bg-white chat-box"></div>
+    <div class="mb-3">
+        <label for="message" class="form-label"></label>
+        <textarea placeholder="Type a messages" class="form-control" id="message" rows="3"></textarea>
+    </div>
+
+</div>
+{{ room_name|json_script:"room-name" }}
+{% endblock content %}
+{% block js %}
+<script defer src="{% static 'js/room.js' %}"></script>
+{% endblock js %}

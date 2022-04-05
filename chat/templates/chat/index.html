@@ -1,0 +1,28 @@
+{% extends 'chat/base.html' %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'styles/home.css' %}">
+{% endblock css %}
+
+{% block content %}
+<input id="user_uuid" value="{{ request.session.user_uuid }}" type="hidden">
+<main class="form-signin">
+    <img class="mb-4 w-100" src="{% static 'images/logo.svg' %}" alt="">
+    <div id="js-default">
+        <h5 class="mb-3 fw-normal">Please click the following button to chat with stranger.</h5>
+        <button id="chat-now" class="w-100 btn btn-lg btn-primary" type="submit">Chat now</button>
+    </div>
+    <div id="js-waiting" class="d-none">
+        <button class="btn btn-lg btn-primary w-100" type="button" disabled>
+            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Please waitting...
+        </button>
+    </div>
+<p class="mt-5 mb-3 text-muted">© 2021-2022</p>
+</main>
+{% endblock content %}
+
+{% block js %}
+    <script src="{% static 'js/index.js' %}"></script>
+{% endblock js %}
