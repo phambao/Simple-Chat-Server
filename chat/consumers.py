@@ -15,12 +15,12 @@ class ChatConsumer(AsyncWebsocketConsumer):
             self.room_group_name,
             self.channel_name
         )
-        await self.accept()
-        # has_room = await self.has_room(self.room_name)
-        # if has_room:
-        #     await self.accept()
-        # else:
-        #     await self.close()
+
+        has_room = await self.has_room(self.room_name)
+        if has_room:
+            await self.accept()
+        else:
+            await self.close()
 
     async def disconnect(self, close_code):
         await self.delete_room(self.scope['url_route']['kwargs']['room_name'])
