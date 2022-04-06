@@ -1,9 +1,13 @@
 # chat/views.py
-from django.http import HttpResponseNotAllowed, JsonResponse
-from django.shortcuts import render
+from django.http import HttpResponseNotAllowed, JsonResponse, HttpResponseRedirect
+from django.shortcuts import render, reverse
 from django.views.decorators.csrf import csrf_exempt
 
 from chat.models import Room
+
+
+def home(request):
+    return HttpResponseRedirect(reverse('index'))
 
 
 @csrf_exempt
